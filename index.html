@@ -1,14 +1,64 @@
-<!DOCTYPE html>
-<html ng-app="sensor">
+<!DOCTYPE HTML>
+<html ng-app="sensorTemperatura">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script type="text/javascript" src="libs/jquery-3.0.0.min.js"></script>
+        <script src="libs/highcharts/js/highcharts.js"></script>
+        <script src="libs/highcharts/js/modules/exporting.js"></script>
+
         <script src="libs/angular.min.js"></script>
         <script src="sensor.js"></script>
+        <script src="grafico.js"></script>
+        <title>Sensor de temperatua automatizado</title>
     </head>
-    <body ng-controller="controlador">
-        <div>TODO write content</div>
+    <body class="fundo" ng-controller="controle">
+
+        <div class="topo">
+            <h2>Sensor de temperatura automatizado</h2>
+        </div>
+
+        <div class="meio">
+            <div class="modif col-lg-3">
+                <div class="form-group">
+                    <span>Sensibilidade para o alarme a partir de:
+                        <input type="number" class="form-control" ng-model="dados.variaveis">
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <span>Alguma coisa:
+                        <input type="number" class="form-control" ng-model="dados.variaveis">
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <span>Porta analógica do sensor de MQ-2:
+                        <input type="text" class="form-control" ng-model="dados.variaveis">
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <span>Alguma coisa:
+                        <input type="number" class="form-control" ng-model="dados.variaveis">
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <span>Alguma coisa:
+                        <input type="number" class="form-control" ng-model="dados.variaveis">
+                    </span>
+                </div>
+            </div>
+
+            <div id="container" class="col-lg-8"></div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="modif main_footer col-lg-12">
+            <a href="https://github.com/eduardoValle/sensorTemperatura" target="_blank" title="Projeto Simplex">&copy; Projeto Sensor de temperatura automatizado - Todos os Direitos Reservados</a>
+        </footer>
     </body>
 </html>
