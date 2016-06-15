@@ -4,6 +4,7 @@ body{font-variant: small-caps;}
 .fundo{margin: auto; background-image: url("../imagens/fundo.jpg"); color: #c7c7c7;}
 .topo{margin: auto; margin-top: 20px;}
 .modif{margin: auto; margin-top: 20px; font-size: 16px; background-image: url("../imagens/conteudo.jpg"); padding: 20px; color: #333;}
+.grafico{margin: auto; font-size: 16px; padding: 20px; color: #333;}
 
 .hidden{display: none;}
 

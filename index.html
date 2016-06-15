@@ -8,10 +8,9 @@
         <script type="text/javascript" src="libs/jquery-3.0.0.min.js"></script>
         <script src="libs/highcharts/js/highcharts.js"></script>
         <script src="libs/highcharts/js/modules/exporting.js"></script>
-
         <script src="libs/angular.min.js"></script>
-        <script src="sensor.js"></script>
-        <script src="grafico.js"></script>
+        <script src="js/sensor.js"></script>
+        <script src="js/grafico.js"></script>
         <title>Sensor de temperatua automatizado</title>
     </head>
     <body class="fundo" ng-controller="controle">
@@ -20,7 +19,8 @@
             <h2>Sensor de temperatura automatizado</h2>
         </div>
 
-        <div class="meio">
+        <!-- MENU LATERAL -->
+        <div>
             <div class="modif col-lg-3">
                 <div class="form-group">
                     <span>Sensibilidade para o alarme a partir de:
@@ -52,8 +52,9 @@
                     </span>
                 </div>
             </div>
-
-            <div id="container" class="col-lg-8"></div>
+            
+            <!-- GRAFICO -->
+            <div id="container" class="col-lg-8 grafico"></div>
         </div>
 
         <!-- FOOTER -->
