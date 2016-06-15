@@ -11,4 +11,4 @@ Um protótipo que usa sensor de gás, servo motor, ventoinha e leds, acoplados n
 * [Luiz Eduardo](https://github.com/eduardoValle)
 * [Thiago Luiz](https://github.com/thiagolpv)
 
-### Wiki
+### Wiki [►](https://github.com/eduardoValle/sensorTemperatura/wiki)
