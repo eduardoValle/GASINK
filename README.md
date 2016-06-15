@@ -6,4 +6,9 @@ Um protótipo que usa sensor de gás, servo motor, ventoinha e leds, acoplados n
 
 ### Integrantes
 
+* [Adalton Dantas](https://github.com/donatelloferraz)
+* [Giselle Cirino](https://github.com/gisellecirino)
+* [Luiz Eduardo](https://github.com/eduardoValle)
+* [Thiago Luiz](https://github.com/thiagolpv)
+
 ### Wiki
