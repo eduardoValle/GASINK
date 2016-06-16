@@ -17,6 +17,10 @@ app.get('/', function (req, res) {
     res.render('index');
 });
 
-app.use(express.static(__dirname + '/static'));
+app.use('/views', express.static('views'));
+app.use('/js', express.static(__dirname + '/js'));
+app.use('/libs', express.static(__dirname + '/libs'));
+app.use('/layout', express.static(__dirname + '/layout'));
 
-app.use('/js', express.static(__dirname + '/static/javascript'));
+
+console.log(__dirname + '/layout');

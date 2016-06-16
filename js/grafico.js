@@ -1,4 +1,6 @@
-$(function () {
+angular.module('sensorTemperatura', []);
+angular.module('sensorTemperatura').controller('controle', function ($scope) {
+
     $('#container').highcharts({
         chart: {
             type: 'areaspline'
