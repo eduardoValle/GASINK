@@ -14,6 +14,8 @@ angular.module('sensorTemperatura').controller('controle', function ($scope, $ht
 
             // add the point
             chart.series[0].addPoint(ponto, true, shift);
+            setTimeout(requestData, 1000);
+            
         }).error(function (data, status) {
             console.log(data);
         });
