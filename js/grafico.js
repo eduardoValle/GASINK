@@ -1,12 +1,36 @@
 angular.module('sensorTemperatura', []);
-angular.module('sensorTemperatura').controller('controle', function ($scope) {
+angular.module('sensorTemperatura').controller('controle', function ($scope, $http) {
 
-    $('#container').highcharts({
+    var chart;
+
+    function requestData(){
+        $http.get("/grafico").success(function (data, status) {
+            var ponto = data;
+            console.log(ponto);
+
+            var series = chart.series[0],
+                    shift = series.data.length > 20; // shift if the series is 
+            // longer than 20
+
+            // add the point
+            chart.series[0].addPoint(ponto, true, shift);
+        }).error(function (data, status) {
+            console.log(data);
+        });
+    }
+    
+
+
+    chart = new Highcharts.Chart({
         chart: {
-            type: 'areaspline'
+            renderTo: 'container',
+            type: 'areaspline',
+            events: {
+                load: requestData
+            }
         },
         title: {
-            text: 'Concentração de gases por c³'
+            text: 'Concentração de gases por cm³'
         },
         legend: {
             layout: 'vertical',
@@ -52,8 +76,10 @@ angular.module('sensorTemperatura').controller('controle', function ($scope) {
             }
         },
         series: [{
-                name: 'John',
+                name: 'Nível de Gás',
                 data: [3, 4, 3, 5, 4, 10, 12]
             }]
     });
+
+    console.log(chart.series);
 });
