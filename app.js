@@ -28,6 +28,7 @@ var board = new five.Board();
 board.on("ready", function () {
 
     /** PORTÃO **/
+
     app.get('/abrirPortao', function (req, res) {
         portao.abrirPortao();
     });
@@ -46,30 +47,26 @@ board.on("ready", function () {
         cooler.desligarCooler();
     });
 
-    /*
-     // Pegando o pino do led vermelho.
-     var ledVermelho = new five.Led('13');
-     
-     // Pegando o pino analógico do sensor de gás.
-     var gas = new five.Sensor("A0");
-     var y;
-     
-     gas.scale(0, 100).on("change", function () {
-     
-     y = parseFloat(this.value.toFixed(3));
-     
-     ledVermelho.blink(500);
-     app.get('/grafico', function (req, res) {
-     console.log(y);
-     var data = new Date();
-     
-     var hora = data.getHours() + ":" + data.getMinutes() + ":" + data.getSeconds();
-     
-     var ponto = new Array(hora, y);
-     
-     res.json(ponto);
-     });
-     
-     });
-     */
+
+    /** SENSOR **/
+
+    // Pegando o pino analógico do sensor de gás.
+    var gas = new five.Sensor("A0");
+    var sensibilidade = 15, y;
+
+    gas.scale(0, 100).on("change", function () {
+
+        y = parseFloat(this.value.toFixed(3));
+        app.get('/grafico', function (req, res) {
+            console.log(y);
+            var data = new Date();
+
+            var hora = data.getHours() + ":" + data.getMinutes() + ":" + data.getSeconds();
+
+            var ponto = new Array(hora, y);
+
+            res.json(ponto);
+        });
+
+    });
 });

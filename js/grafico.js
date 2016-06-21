@@ -6,6 +6,14 @@ angular.module('sensorTemperatura').controller('controle', function ($scope, $ht
 
     $scope.interagirPortao = function () {
         if (!$scope.statusPortao) {
+            abrirPortao();
+        } else {
+            fecharPortao();
+        }
+    };
+
+    function abrirPortao() {
+        if ($scope.statusPortao === 0) {
             $http.get("/abrirPortao").success(function (data, status) {
 
                 $scope.statusPortao = 1;
@@ -14,7 +22,11 @@ angular.module('sensorTemperatura').controller('controle', function ($scope, $ht
             }).error(function (data, status) {
                 console.log(console.log("Problemas ao abrir Portão: ") + data);
             });
-        } else {
+        }
+    }
+
+    function fecharPortao() {
+        if ($scope.statusPortao === 1) {
             $http.get("/fecharPortao").success(function (data, status) {
 
                 $scope.statusPortao = 0;
@@ -24,7 +36,8 @@ angular.module('sensorTemperatura').controller('controle', function ($scope, $ht
                 console.log(console.log("Problemas ao fechar Portão: ") + data);
             });
         }
-    };
+    }
+
 
     /** Cooler **/
     $scope.statusCooler = 0; // 0 = Desligado 1 = Ligado
@@ -33,6 +46,15 @@ angular.module('sensorTemperatura').controller('controle', function ($scope, $ht
 
     $scope.interagirCooler = function () {
         if (!$scope.statusCooler) {
+
+            ligarCooler();
+        } else {
+            desligarCooler();
+        }
+    };
+
+    function ligarCooler() {
+        if ($scope.statusCooler === 0) {
             $http.get("/ligarCooler").success(function (data, status) {
 
                 $scope.statusCooler = 1;
@@ -41,7 +63,11 @@ angular.module('sensorTemperatura').controller('controle', function ($scope, $ht
             }).error(function (data, status) {
                 console.log(console.log("Problemas ao ligar cooler: ") + data);
             });
-        } else {
+        }
+    }
+
+    function desligarCooler() {
+        if ($scope.statusCooler === 1) {
             $http.get("/desligarCooler").success(function (data, status) {
 
                 $scope.statusCooler = 0;
@@ -51,7 +77,8 @@ angular.module('sensorTemperatura').controller('controle', function ($scope, $ht
                 console.log(console.log("Problemas ao desligar cooler: ") + data);
             });
         }
-    };
+    }
+
 
     /** GRAFICO / SENSOR **/
     var chart;
@@ -59,11 +86,10 @@ angular.module('sensorTemperatura').controller('controle', function ($scope, $ht
     function requestData() {
         $http.get("/grafico").success(function (data, status) {
             var ponto = data;
-            console.log(ponto);
-
             var series = chart.series[0],
-                    shift = series.data.length > 20; // shift if the series is 
-            // longer than 20
+                    shift = series.data.length > 20; // shift if the series is longer than 20
+
+            $scope.mediaCalculada = ponto[1];
 
             // add the point
             chart.series[0].addPoint(ponto, true, shift);
@@ -72,6 +98,17 @@ angular.module('sensorTemperatura').controller('controle', function ($scope, $ht
         }).error(function (data, status) {
             console.log(data);
         });
+
+        if ($scope.mediaCalculada > 15) {
+            ligarCooler();
+            abrirPortao();
+        }
+    /*    
+        else{
+            desligarCooler();
+            fecharPortao();
+        }
+    */    
     }
 
     chart = new Highcharts.Chart({
@@ -133,4 +170,12 @@ angular.module('sensorTemperatura').controller('controle', function ($scope, $ht
                 data: [3, 4, 3, 5, 4, 10, 12]
             }]
     });
+
+    function pegarMedia(array) {
+        media = 0;
+        for (i = 0; i < array.length; i++) {
+            media += array[i];
+        }
+        return media / array.length;
+    }
 });
