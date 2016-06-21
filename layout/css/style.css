@@ -1,0 +1,9 @@
+.servicos p {
+    margin: 2em 5em 2em 15em;
+}
+
+.servicos img {
+    width: 150px;
+    height: 150px;
+    float: left;
+}
