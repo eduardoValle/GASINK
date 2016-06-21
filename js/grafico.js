@@ -1,17 +1,14 @@
 angular.module('sensorTemperatura', []);
 angular.module('sensorTemperatura').controller('controle', function ($scope, $http) {
 
-
     /** Portão **/
-    $scope.statusPortao = 0; // 0 = Desligado 1 = Ligado
-    $scope.nomeBotaoPortao = ($scope.statusPortao ? "Desligar Portão" : "Ligar Portão");
-    console.log($scope.nomeBotaoPortao);
+    $scope.statusPortao = 0; // 0 = Fechado 1 = Aberto
 
-    $scope.interagirCooler = function (statusCooler) {
-        if (!statusCooler) {
+    $scope.interagirPortao = function () {
+        if (!$scope.statusPortao) {
             $http.get("/abrirPortao").success(function (data, status) {
 
-                statusCooler = 1;
+                $scope.statusPortao = 1;
                 console.log("O Portão foi aberto!!");
 
             }).error(function (data, status) {
@@ -20,7 +17,7 @@ angular.module('sensorTemperatura').controller('controle', function ($scope, $ht
         } else {
             $http.get("/fecharPortao").success(function (data, status) {
 
-                statusCooler = 0;
+                $scope.statusPortao = 0;
                 console.log("O Portão foi fechado!!");
 
             }).error(function (data, status) {
@@ -34,11 +31,11 @@ angular.module('sensorTemperatura').controller('controle', function ($scope, $ht
     $scope.nomeBotaoCooler = ($scope.statusCooler ? "Desligar Cooler" : "Ligar Cooler");
     //console.log($scope.nomeBotaoCooler);
 
-    $scope.interagirCooler = function (statusCooler) {
-        if (!statusCooler) {
+    $scope.interagirCooler = function () {
+        if (!$scope.statusCooler) {
             $http.get("/ligarCooler").success(function (data, status) {
 
-                statusCooler = 1;
+                $scope.statusCooler = 1;
                 console.log("Cooler ligado!!");
 
             }).error(function (data, status) {
@@ -47,7 +44,7 @@ angular.module('sensorTemperatura').controller('controle', function ($scope, $ht
         } else {
             $http.get("/desligarCooler").success(function (data, status) {
 
-                statusCooler = 0;
+                $scope.statusCooler = 0;
                 console.log("Cooler desligado!!");
 
             }).error(function (data, status) {
@@ -56,7 +53,7 @@ angular.module('sensorTemperatura').controller('controle', function ($scope, $ht
         }
     };
 
-    /** GRAFICO **/
+    /** GRAFICO / SENSOR **/
     var chart;
 
     function requestData() {
