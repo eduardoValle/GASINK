@@ -1,6 +1,9 @@
 var express = require('express');
 var cons = require('consolidate');
 
+var cooler = require('./js/cooler');
+var portao = require('./js/servoMotor');
+
 app = express();
 app.listen(3000);
 console.log('Servidor iniciado em localhost:3000. Ctrl+C para encerrar…');
@@ -24,28 +27,49 @@ var board = new five.Board();
 
 board.on("ready", function () {
 
-    // Pegando o pino do led vermelho.
-    var ledVermelho = new five.Led('13');
-
-    // Pegando o pino analógico do sensor de gás.
-    var gas = new five.Sensor("A0");
-    var y;
-    
-    gas.scale(0, 100).on("change", function () {
-
-        y = parseFloat(this.value.toFixed(3));
-        
-        ledVermelho.blink(500);
-        app.get('/grafico', function (req, res) {
-            console.log(y);
-            var data = new Date();
-            
-            var hora = data.getHours() + ":" + data.getMinutes() + ":" + data.getSeconds();
-
-            var ponto = new Array(hora, y);
-
-            res.json(ponto);
-        });
-
+    /** PORTÃO **/
+    app.get('/abrirPortao', function (req, res) {
+        portao.abrirPortao();
     });
+
+    app.get('/fecharPortao', function (req, res) {
+        portao.fecharPortao();
+    });
+
+
+    /** COOLER **/
+    app.get('/ligarCooler', function (req, res) {
+        cooler.ligarCooler();
+    });
+
+    app.get('/desligarCooler', function (req, res) {
+        cooler.desligarCooler();
+    });
+
+    /*
+     // Pegando o pino do led vermelho.
+     var ledVermelho = new five.Led('13');
+     
+     // Pegando o pino analógico do sensor de gás.
+     var gas = new five.Sensor("A0");
+     var y;
+     
+     gas.scale(0, 100).on("change", function () {
+     
+     y = parseFloat(this.value.toFixed(3));
+     
+     ledVermelho.blink(500);
+     app.get('/grafico', function (req, res) {
+     console.log(y);
+     var data = new Date();
+     
+     var hora = data.getHours() + ":" + data.getMinutes() + ":" + data.getSeconds();
+     
+     var ponto = new Array(hora, y);
+     
+     res.json(ponto);
+     });
+     
+     });
+     */
 });

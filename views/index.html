@@ -1,315 +1,313 @@
 <!DOCTYPE html>
 <html ng-app="sensorTemperatura">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gasink</title>
+        <title>Gasink</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/layout/css/bootstrap.min.css" type="text/css">
+        <!-- Bootstrap Core CSS -->
+        <link rel="stylesheet" href="/layout/css/bootstrap.min.css" type="text/css">
 
-    <!-- Custom Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/layout/font-awesome/css/font-awesome.min.css" type="text/css">
+        <!-- Custom Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/layout/font-awesome/css/font-awesome.min.css" type="text/css">
 
-    <!-- Plugin CSS -->
-    <link rel="stylesheet" href="/layout/css/magnific-popup.css" type="text/css">
+        <!-- Plugin CSS -->
+        <link rel="stylesheet" href="/layout/css/magnific-popup.css" type="text/css">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/layout/css/creative.css" type="text/css">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/layout/css/creative.css" type="text/css">
 
-    <!-- JQUERY e ANGULAR -->
-    <script type="text/javascript" src="/layout/js/jquery.js"></script>
-    <script src="/libs/angular.min.js"></script>
+        <!-- JQUERY e ANGULAR -->
+        <script type="text/javascript" src="/layout/js/jquery.js"></script>
+        <script src="/libs/angular.min.js"></script>
 
-    <!-- Sensor -->
-    <script src="/libs/highcharts/js/highcharts.js"></script>
-    <script src="/libs/highcharts/js/modules/exporting.js"></script>
-    <script src="/js/grafico.js"></script>
+        <!-- Sensor -->
+        <script src="/libs/highcharts/js/highcharts.js"></script>
+        <script src="/libs/highcharts/js/modules/exporting.js"></script>
+        <script src="/js/grafico.js"></script>
 
-    <!-- CSS  -->
-    <link rel="stylesheet" href="/layout/css/style.css" type="text/css">
-    <script src="/js/servicos.js"></script>
+        <!-- CSS  -->
+        <link rel="stylesheet" href="/layout/css/style.css" type="text/css">
+        <script src="/js/servicos.js"></script>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-</head>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+                <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+                <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+            <![endif]-->
+    </head>
 
-<body id="page-top" ng-controller="controle">
+    <body id="page-top" ng-controller="controle">
 
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Gasink</a>
+        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="#page-top">Gasink</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a class="page-scroll" href="#Graphics">Gráficos</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#Log">Logs</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#Portfolio">Imagens</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#Servicos">Serviços</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#Coders">Coders</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#Info">Informações</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
             </div>
+            <!-- /.container-fluid -->
+        </nav>
+        <header>
+            <div class="header-content">
+                <div class="header-content-inner">
+                    <h1>GASINK</h1>
+                    <hr>
+                    <p>Um protótipo que usa sensor de gás, servo motor, ventoinha e leds, acoplados no Arduino para realizar a dissipação de gás de um ambiente fechado e emitir alerts visuais, simulando com uma maquete.</p>
+                    <a href="#Graphics" class="btn btn-primary btn-xl page-scroll">Gráfico de detecção de gás</a>
+                </div>
+            </div>
+        </header>
+        <section id="Graphics">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">Gráfico de detecção do gás.</h2>
+                        <hr class="primary">
+                    </div>
+                    <div class="modif col-lg-4">
+                        <div class="form-group">
+                            <span>Média de gás/cm³:
+                                <input type="number" class="form-control" ng-model="dados.variaveis" disabled>
+                            </span>
+                        </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="#Graphics">Gráficos</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#Log">Logs</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#Portfolio">Imagens</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#Servicos">Serviços</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#Coders">Coders</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#Info">Informações</a>
-                    </li>
-                </ul>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                    <button class="form-control btn-primary" type="button">Aplicar</button>
+                                </span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <button class="form-control btn-primary" ng-click="gerarMatriz();">Pausar sensor</button>
+                        </div>
+
+                        <div class="form-group">
+                            <button class="form-control btn-primary" ng-click="gerarMatriz();">Abrir Portão</button>
+                        </div>
+
+                        <div class="form-group">
+                            <button class="form-control btn-primary" ng-click="interagirCooler(statusCooler);" value="nomeBotaoCooler">{{nomeBotaoCooler(statusCooler)}}</button>
+                        </div>
+                    </div>
+
+                    <div id="container" class="col-lg-8"></div>
+                </div>
             </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-    <header>
-        <div class="header-content">
-            <div class="header-content-inner">
-                <h1>GASINK</h1>
-                <hr>
-                <p>Um protótipo que usa sensor de gás, servo motor, ventoinha e leds, acoplados no Arduino para realizar a dissipação de gás de um ambiente fechado e emitir alerts visuais, simulando com uma maquete.</p>
-                <a href="#Graphics" class="btn btn-primary btn-xl page-scroll">Gráfico de detecção de gás</a>
+        </section>
+
+        <section class="bg-primary" id="Log">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">Tabela de Log.</h2>
+                        <hr class="primary">
+                    </div>
+                </div>
             </div>
-        </div>
-    </header>
-    <section id="Graphics">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Gráfico de detecção do gás.</h2>
+        </section>
+
+        <section class="no-padding" id="Portfolio">
+            <div class="container-fluid">
+                <div class="row no-gutter popup-gallery">
+                    <div class="col-lg-4 col-sm-6">
+                        <a href="/layout/img/portfolio/fullsize/1.jpg" class="portfolio-box">
+                            <img src="/layout/img/portfolio/thumbnails/1.jpg" class="img-responsive" alt="">
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-name">
+                                        Click zoom!
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a href="/layout/img/portfolio/fullsize/2.jpg" class="portfolio-box">
+                            <img src="/layout/img/portfolio/thumbnails/2.jpg" class="img-responsive" alt="">
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-name">
+                                        Click zoom!
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a href="/layout/img/portfolio/fullsize/3.jpg" class="portfolio-box">
+                            <img src="/layout/img/portfolio/thumbnails/3.jpg" class="img-responsive" alt="">
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-name">
+                                        Click zoom!
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a href="/layout/img/portfolio/fullsize/4.jpg" class="portfolio-box">
+                            <img src="/layout/img/portfolio/thumbnails/4.jpg" class="img-responsive" alt="">
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-name">
+                                        Click zoom!
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a href="/layout/img/portfolio/fullsize/5.jpg" class="portfolio-box">
+                            <img src="/layout/img/portfolio/thumbnails/5.jpg" class="img-responsive" alt="">
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-name">
+                                        Click zoom!
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a href="/layout/img/portfolio/fullsize/6.jpg" class="portfolio-box">
+                            <img src="/layout/img/portfolio/thumbnails/6.jpg" class="img-responsive" alt="">
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-name">
+                                        Click zoom!
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="Servicos">
+            <div class="container" ng-controller="ServicosController">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">Serviços utilizados no projeto.</h2>{{servico.img}}
+                        <hr class="primary">
+                    </div>
+                    <div class="servicos" ng-repeat="servico in servicos">
+                        <div class="col-lg-12 img-responsive">
+                            <div class="pull-xs-left">
+                                <img src="{{servico.img}}" class="img-rounded" alt=""/>
+                                <p>
+                                    {{servico.descricao}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-primary" id="Coders">
+            <div class="container">
+                <div class="row popup-gallery">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-heading">Coders</h2>
+                        <hr class="primary">
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <img src="/layout/img/coders/1.jpg" class="img-rounded img-responsive" alt="">
+                        <div class="text-center">
+                            <h3>Donatello Ferraz</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <img src="/layout/img/coders/2.jpg" class="img-rounded img-responsive" alt="">
+                        <div class="text-center">
+                            <h3>Giselle Cirino</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <img src="/layout/img/coders/3.jpg" class="img-rounded img-responsive" alt="">
+                        <div class="text-center">
+                            <h3>Luiz Eduardo</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <img src="/layout/img/coders/4.jpg" class="img-rounded img-responsive" alt="">
+                        <div class="text-center">
+                            <h3>Thiago Luiz</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <aside class="bg-dark" id="Info">
+            <div class="container text-center">
+                <div class="call-to-action">
+                    <h2>Informações</h2>
                     <hr class="primary">
-                </div>
-                <div class="modif col-lg-4">
-                    <div class="form-group">
-                        <span>Sensibilidade para o alarme a partir de:
-                                <input type="number" class="form-control" ng-model="dados.variaveis">
-                            </span>
-                    </div>
-
-                    <div class="form-group">
-                        <span>Alguma coisa:
-                                <input type="number" class="form-control" ng-model="dados.variaveis">
-                            </span>
-                    </div>
-
-                    <div class="form-group">
-                        <span>Porta analógica do sensor de MQ-2:
-                                <input type="text" class="form-control" ng-model="dados.variaveis">
-                            </span>
-                    </div>
-
-                    <div class="form-group">
-                        <span>Alguma coisa:
-                                <input type="number" class="form-control" ng-model="dados.variaveis">
-                            </span>
-                    </div>
-
-                    <div class="form-group">
-                        <span>Alguma coisa:
-                                <input type="number" class="form-control" ng-model="dados.variaveis">
-                            </span>
-                    </div>
-                </div>
-
-                <div id="container" class="col-lg-8"></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="bg-primary" id="Log">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Tabela de Log.</h2>
-                    <hr class="primary">
+                    <a href="https://github.com/eduardoValle/sensorTemperatura" target="blank"><i class="fa fa-github fa-3x"></i></a>
+                    <br>
+                    <br>
+                    <p>© Projeto Sensor de temperatura automatizado - Todos os Direitos Reservados</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </aside>
 
-    <section class="no-padding" id="Portfolio">
-        <div class="container-fluid">
-            <div class="row no-gutter popup-gallery">
-                <div class="col-lg-4 col-sm-6">
-                    <a href="/layout/img/portfolio/fullsize/1.jpg" class="portfolio-box">
-                        <img src="/layout/img/portfolio/thumbnails/1.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-name">
-                                    Click zoom!
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="/layout/img/portfolio/fullsize/2.jpg" class="portfolio-box">
-                        <img src="/layout/img/portfolio/thumbnails/2.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-name">
-                                    Click zoom!
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="/layout/img/portfolio/fullsize/3.jpg" class="portfolio-box">
-                        <img src="/layout/img/portfolio/thumbnails/3.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-name">
-                                    Click zoom!
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="/layout/img/portfolio/fullsize/4.jpg" class="portfolio-box">
-                        <img src="/layout/img/portfolio/thumbnails/4.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-name">
-                                    Click zoom!
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="/layout/img/portfolio/fullsize/5.jpg" class="portfolio-box">
-                        <img src="/layout/img/portfolio/thumbnails/5.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-name">
-                                    Click zoom!
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="/layout/img/portfolio/fullsize/6.jpg" class="portfolio-box">
-                        <img src="/layout/img/portfolio/thumbnails/6.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-name">
-                                    Click zoom!
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="/layout/js/bootstrap.min.js"></script>
 
-    <section id="Servicos">
-        <div class="container" ng-controller="ServicosController">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Serviços utilizados no projeto.</h2>
-                    <hr class="primary">
-                </div>
-                <div class="servicos" ng-repeat="servico in servicos">
-                    <div class="col-lg-12 img-responsive">
-                        <div class="pull-xs-left">
-                            <img src="{{servico.img}}" class="img-rounded" />
-                            <p>
-                                {{servico.descricao}}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Plugin JavaScript -->
+        <script src="/layout/js/scrollreveal.min.js"></script>
+        <script src="/layout/js/jquery.easing.min.js"></script>
+        <script src="/layout/js/jquery.fittext.js"></script>
+        <script src="/layout/js/jquery.magnific-popup.min.js"></script>
 
-    <section class="bg-primary" id="Coders">
-        <div class="container">
-            <div class="row popup-gallery">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Coders</h2>
-                    <hr class="primary">
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <img src="/layout/img/coders/1.jpg" class="img-rounded img-responsive" alt="">
-                    <div class="text-center">
-                        <h3>Donatello Ferraz</h3>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <img src="/layout/img/coders/2.jpg" class="img-rounded img-responsive" alt="">
-                    <div class="text-center">
-                        <h3>Giselle Cirino</h3>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <img src="/layout/img/coders/3.jpg" class="img-rounded img-responsive" alt="">
-                    <div class="text-center">
-                        <h3>Luiz Eduardo</h3>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <img src="/layout/img/coders/4.jpg" class="img-rounded img-responsive" alt="">
-                    <div class="text-center">
-                        <h3>Thiago Luiz</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <aside class="bg-dark" id="Info">
-        <div class="container text-center">
-            <div class="call-to-action">
-                <h2>Informações</h2>
-                <hr class="primary">
-                <a href="https://github.com/eduardoValle/sensorTemperatura" target="blank"><i class="fa fa-github fa-3x"></i></a>
-                <br>
-                <br>
-                <p>© Projeto Sensor de temperatura automatizado - Todos os Direitos Reservados</p>
-            </div>
-        </div>
-    </aside>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/layout/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="/layout/js/scrollreveal.min.js"></script>
-    <script src="/layout/js/jquery.easing.min.js"></script>
-    <script src="/layout/js/jquery.fittext.js"></script>
-    <script src="/layout/js/jquery.magnific-popup.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="/layout/js/creative.js"></script>
-</body>
+        <!-- Custom Theme JavaScript -->
+        <script src="/layout/js/creative.js"></script>
+    </body>
 
 </html>

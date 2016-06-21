@@ -1,9 +1,65 @@
 angular.module('sensorTemperatura', []);
 angular.module('sensorTemperatura').controller('controle', function ($scope, $http) {
 
+
+    /** Portão **/
+    $scope.statusPortao = 0; // 0 = Desligado 1 = Ligado
+    $scope.nomeBotaoPortao = ($scope.statusPortao ? "Desligar Portão" : "Ligar Portão");
+    console.log($scope.nomeBotaoPortao);
+
+    $scope.interagirCooler = function (statusCooler) {
+        if (!statusCooler) {
+            $http.get("/abrirPortao").success(function (data, status) {
+
+                statusCooler = 1;
+                console.log("O Portão foi aberto!!");
+
+            }).error(function (data, status) {
+                console.log(console.log("Problemas ao abrir Portão: ") + data);
+            });
+        } else {
+            $http.get("/fecharPortao").success(function (data, status) {
+
+                statusCooler = 0;
+                console.log("O Portão foi fechado!!");
+
+            }).error(function (data, status) {
+                console.log(console.log("Problemas ao fechar Portão: ") + data);
+            });
+        }
+    };
+
+    /** Cooler **/
+    $scope.statusCooler = 0; // 0 = Desligado 1 = Ligado
+    $scope.nomeBotaoCooler = ($scope.statusCooler ? "Desligar Cooler" : "Ligar Cooler");
+    //console.log($scope.nomeBotaoCooler);
+
+    $scope.interagirCooler = function (statusCooler) {
+        if (!statusCooler) {
+            $http.get("/ligarCooler").success(function (data, status) {
+
+                statusCooler = 1;
+                console.log("Cooler ligado!!");
+
+            }).error(function (data, status) {
+                console.log(console.log("Problemas ao ligar cooler: ") + data);
+            });
+        } else {
+            $http.get("/desligarCooler").success(function (data, status) {
+
+                statusCooler = 0;
+                console.log("Cooler desligado!!");
+
+            }).error(function (data, status) {
+                console.log(console.log("Problemas ao desligar cooler: ") + data);
+            });
+        }
+    };
+
+    /** GRAFICO **/
     var chart;
 
-    function requestData(){
+    function requestData() {
         $http.get("/grafico").success(function (data, status) {
             var ponto = data;
             console.log(ponto);
@@ -15,13 +71,11 @@ angular.module('sensorTemperatura').controller('controle', function ($scope, $ht
             // add the point
             chart.series[0].addPoint(ponto, true, shift);
             setTimeout(requestData, 1000);
-            
+
         }).error(function (data, status) {
             console.log(data);
         });
     }
-    
-
 
     chart = new Highcharts.Chart({
         chart: {
@@ -82,6 +136,4 @@ angular.module('sensorTemperatura').controller('controle', function ($scope, $ht
                 data: [3, 4, 3, 5, 4, 10, 12]
             }]
     });
-
-    console.log(chart.series);
 });
