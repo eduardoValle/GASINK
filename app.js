@@ -1,8 +1,13 @@
-var express = require('express');
-var cons = require('consolidate');
+var express = require('express'),
+    cons = require('consolidate'),
+    five = require("johnny-five");
 
-var cooler = require('./js/cooler');
-var portao = require('./js/servoMotor');
+var cooler = require('./js/cooler'),
+    portao = require('./js/servoMotor');
+
+/***************************
+  * RENDERIZAÇÃO E ROTAS *
+***************************/
 
 app = express();
 app.listen(3000);
@@ -21,13 +26,18 @@ app.use('/js', express.static(__dirname + '/js'));
 app.use('/libs', express.static(__dirname + '/libs'));
 app.use('/layout', express.static(__dirname + '/layout'));
 
-var five = require("johnny-five");
+
+/*******************************
+  * INTEGRAÇÃO COM O ARDUINO *
+*******************************/
 
 var board = new five.Board();
 
 board.on("ready", function () {
 
-    /** PORTÃO **/
+    /**************
+      * PORTÃO *
+    **************/
     var servo = new five.Servo(9);
     app.get('/abrirPortao', function (req, res) {
         portao.abrirPortao(servo);
@@ -38,7 +48,9 @@ board.on("ready", function () {
     });
 
 
-    /** COOLER **/
+    /*************
+      * COOLER *
+    **************/
     app.get('/ligarCooler', function (req, res) {
         cooler.ligarCooler();
     });
@@ -48,11 +60,12 @@ board.on("ready", function () {
     });
 
 
-    /** SENSOR **/
-
+    /*************
+      * SENSOR *
+    **************/
     // Pegando o pino analógico do sensor de gás.
     var gas = new five.Sensor("A0");
-    var sensibilidade = 15, y;
+    var y;
 
     gas.scale(0, 100).on("change", function () {
 
@@ -60,13 +73,10 @@ board.on("ready", function () {
         app.get('/grafico', function (req, res) {
             console.log(y);
             var data = new Date();
-
             var hora = data.getHours() + ":" + data.getMinutes() + ":" + data.getSeconds();
-
             var ponto = new Array(hora, y);
 
             res.json(ponto);
         });
-
     });
 });

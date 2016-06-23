@@ -113,12 +113,7 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search for...">
-                                    <span class="input-group-btn">
-                                        <button class="form-control btn-primary" type="button">Aplicar</button>
-                                    </span>
-                                </div>
+                                <input type="number" class="form-control" ng-model="sensibilidade" placeholder="Quando vamos ativar o Portão e o cooler?">
                             </div>
 
                             <div class="form-group">
@@ -134,7 +129,11 @@
                             </div>
 
                             <div class="form-group">
-                                <button class="form-control btn-primary" ng-click="interagirCooler();">Cooler</button>
+                                <button class="form-control btn-primary" ng-click="interagirCooler();">Ligar Cooler</button>
+                            </div>
+
+                            <div class="form-group">
+                                <button class="form-control btn-primary" ng-click="interagirCooler();">Desligar Cooler</button>
                             </div>
                         </div>
 
@@ -315,5 +314,4 @@
         <!-- Custom Theme JavaScript -->
         <script src="/layout/js/creative.js"></script>
     </body>
-
 </html>
