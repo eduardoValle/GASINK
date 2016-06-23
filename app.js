@@ -28,13 +28,13 @@ var board = new five.Board();
 board.on("ready", function () {
 
     /** PORTÃO **/
-
+    var servo = new five.Servo(9);
     app.get('/abrirPortao', function (req, res) {
-        portao.abrirPortao();
+        portao.abrirPortao(servo);
     });
 
     app.get('/fecharPortao', function (req, res) {
-        portao.fecharPortao();
+        portao.fecharPortao(servo);
     });
 
 

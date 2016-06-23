@@ -1,11 +1,9 @@
 var five = require("johnny-five");
 
-module.exports.abrirPortao = function () {
-    var servo = new five.Servo(9);
+module.exports.abrirPortao = function (servo) {
     servo.to(0, 3000);
 };
 
-module.exports.fecharPortao = function () {
-    var servo = new five.Servo(9);
+module.exports.fecharPortao = function (servo) {
     servo.to(89, 3000);
 };

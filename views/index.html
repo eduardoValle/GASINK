@@ -24,7 +24,7 @@
 
         <!-- JQUERY e ANGULAR -->
         <script type="text/javascript" src="/layout/js/jquery.js"></script>
-        <script src="/libs/angular.min.js"></script>
+        <script src="/libs/angular.js"></script>
 
         <!-- Sensor -->
         <script src="/libs/highcharts/js/highcharts.js"></script>
@@ -43,8 +43,7 @@
             <![endif]-->
     </head>
 
-    <body id="page-top" ng-controller="controle">
-
+    <body id="page-top">
         <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -96,61 +95,65 @@
                 </div>
             </div>
         </header>
-        <section id="Graphics">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h2 class="section-heading">Gráfico de detecção do gás.</h2>
-                        <hr class="primary">
-                    </div>
-                    <div class="modif col-lg-4">
-                        <div class="form-group">
-                            <span>Média de gás/cm³:
-                                <input type="number" class="form-control" ng-model="mediaCalculada" disabled>
-                            </span>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
-                                <span class="input-group-btn">
-                                    <button class="form-control btn-primary" type="button">Aplicar</button>
+        <!-- GRÁFICO -->
+        <div ng-controller="controle">
+            <section id="Graphics">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <h2 class="section-heading">Gráfico de detecção do gás.</h2>
+                            <hr class="primary">
+                        </div>
+                        <div class="modif col-lg-4">
+                            <div class="form-group">
+                                <span>Média de gás/cm³:
+                                    <input type="number" class="form-control" ng-model="mediaCalculada" disabled>
                                 </span>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search for...">
+                                    <span class="input-group-btn">
+                                        <button class="form-control btn-primary" type="button">Aplicar</button>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button class="form-control btn-primary" ng-click="gerarMatriz();">Pausar sensor</button>
+                            </div>
+
+                            <div class="form-group" ng-if="!statusPortao">
+                                <button class="form-control btn-primary" ng-click="interagirPortao();">Abrir Portão</button>
+                            </div>
+
+                            <div class="form-group" ng-if="!statusPortao">
+                                <button class="form-control btn-primary" ng-click="interagirPortao();">Fehcar Portão</button>
+                            </div>
+
+                            <div class="form-group">
+                                <button class="form-control btn-primary" ng-click="interagirCooler();">Cooler</button>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <button class="form-control btn-primary" ng-click="gerarMatriz();">Pausar sensor</button>
-                        </div>
-
-                        <div class="form-group" ng-if="!statusPortao">
-                            <button class="form-control btn-primary" ng-click="interagirPortao();">Abrir Portão</button>
-                        </div>
-                        
-                        <div class="form-group" ng-if="!statusPortao">
-                            <button class="form-control btn-primary" ng-click="interagirPortao();">Fehcar Portão</button>
-                        </div>
-
-                        <div class="form-group">
-                            <button class="form-control btn-primary" ng-click="interagirCooler();" value="nomeBotaoCooler">{{nomeBotaoCooler(statusCooler)}}</button>
-                        </div>
-                    </div>
-
-                    <div id="container" class="col-lg-8"></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-primary" id="Log">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h2 class="section-heading">Tabela de Log.</h2>
-                        <hr class="primary">
+                        <div id="container" class="col-lg-8"></div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            <section class="bg-primary" id="Log">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <h2 class="section-heading">Tabela de Log.</h2>
+                            <hr class="primary">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
 
         <section class="no-padding" id="Portfolio">
             <div class="container-fluid">
@@ -232,19 +235,19 @@
         </section>
 
         <section id="Servicos">
-            <div class="container" ng-controller="ServicosController">
+            <div class="container" ng-controller="servicosController">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <h2 class="section-heading">Serviços utilizados no projeto.</h2>{{servico.img}}
+                        <h2 class="section-heading">Serviços utilizados no projeto.</h2>
                         <hr class="primary">
                     </div>
                     <div class="servicos" ng-repeat="servico in servicos">
                         <div class="col-lg-12 img-responsive">
                             <div class="pull-xs-left">
-                                <img src="{{servico.img}}" class="img-rounded" alt=""/>
-                                <p>
-                                    {{servico.descricao}}
-                                </p>
+                                <a href="[[servico.link]]" target="blank">
+                                    <img ng-src="[[servico.img]]" class="img-rounded" alt=""/>
+                                </a> 
+                                <p ng-bind="servico.descricao"></p>
                             </div>
                         </div>
                     </div>
